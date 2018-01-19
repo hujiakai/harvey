@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <classPathEntry location="E:/private/workspace/harvey/src/main/resources/mybatisGenerator/ext/mysql-connector-java-5.1.18.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <commentGenerator>
+
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=utf8"
+                        userId="root" password="root"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- javaBean -->
+        <javaModelGenerator targetPackage="com.harvey.web.domain"
+                            targetProject="harvey/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- mapperxml文件生成   targetProject="woc-dao"-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="harvey/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- mapper.java 文件生成 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.harvey.web.dao" targetProject="harvey/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- Table 系列生产 -->
+        <table tableName="test" domainObjectName="Test"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
